@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.ait.project</groupId>
     <artifactId>template</artifactId> <!-- Change This Artifact Id  -->
-    <version>0.0.1-SNAPSHOT</version> <!-- Change This Version -->
+    <version>0.0.1</version> <!-- Change This Version -->
     <name>template</name> <!-- Change This Name -->
     <description>AIT Spring Boot Template</description> <!-- Change This Description -->
     <properties>
@@ -34,11 +34,7 @@
         </dependency>
 
         <!--	Default Dependency	-->
-
-
         <!--	Hapus yang tidak dibutuhkan	-->
-
-
         <!--	Spring Actuator	-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -79,6 +75,13 @@
         </dependency>
         <!--	Spring OpenFeign Bundle	-->
 
+        <!-- postgres -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.5.0</version>
+        </dependency>
+
         <!--        Flyway-->
         <dependency>
             <groupId>org.flywaydb</groupId>
@@ -93,11 +96,6 @@
         </dependency>
         <!--Spring JPA-->
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -118,11 +116,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <!--    Integrated Mapstruct  With Lombok         -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
