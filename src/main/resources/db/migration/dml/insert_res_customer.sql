@@ -1,0 +1,1 @@
+INSERT INTO public.res_customer (id, customer_code, name, email, phone_number, address, create_date, write_date) VALUES (1, '001', 'Rian', 'fachrianlr@gmail.com', '089999', 'Tegal', '2022-09-20 08:56:22.742000', '2022-09-20 08:56:26.996000');
