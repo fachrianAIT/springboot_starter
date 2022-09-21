@@ -19,39 +19,42 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderInternalImpl implements OrderInternal {
 
-    @Autowired
-    OrderDelegateImpl orderDelegate;
-    @Autowired
-    ResponseHelper responseHelper;
-    @Autowired
-    ResOrderTransform resOrderTransform;
+  @Autowired
+  OrderDelegateImpl orderDelegate;
+  @Autowired
+  ResponseHelper responseHelper;
+  @Autowired
+  ResOrderTransform resOrderTransform;
 
-    @Override
-    public ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> getOrderByNoReff(String noReff) {
-        ResOrder resOrder = orderDelegate.getOrderByNoreff(noReff);
-        return responseHelper.createResponseDetail(ResponseEnum.SUCCESS,
-                resOrderTransform.createResOrderResponse(resOrder));
+  @Override
+  public ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>>
+      getOrderByNoReff(String noReff) {
+    ResOrder resOrder = orderDelegate.getOrderByNoreff(noReff);
+    return responseHelper.createResponseDetail(ResponseEnum.SUCCESS,
+        resOrderTransform.createResOrderResponse(resOrder));
+  }
+
+  @Override
+  public ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>>
+      postDraftOrder(ResOrderRequest resOrderRequest) {
+    ResOrder resOrder = orderDelegate.postDraftOrder(resOrderRequest);
+    return responseHelper.createResponseDetail(ResponseEnum.SUCCESS,
+        resOrderTransform.createResOrderResponse(resOrder));
+  }
+
+  @Override
+  public ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>>
+      postPaidtOrder(ResOrderPaymentRequest resOrderPaymentRequest) {
+    if (resOrderPaymentRequest.getChannelPayment().equalsIgnoreCase("bank")) {
+      ResOrder resOrder = orderDelegate.postPaidOrder(resOrderPaymentRequest.getChannelPayment(),
+          resOrderPaymentRequest.getNoReff());
+
+      return responseHelper.createResponseDetail(ResponseEnum.SUCCESS,
+          resOrderTransform.createResOrderResponse(resOrder));
+    } else {
+      ResOrder resOrder = orderDelegate.getOrderByNoreff(resOrderPaymentRequest.getNoReff());
+      return responseHelper.createResponseDetail(ResponseEnum.PAYMENT_CHANNEL_BANK_ONLY,
+          resOrderTransform.createResOrderResponse(resOrder));
     }
-
-    @Override
-    public ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> postDraftOrder(ResOrderRequest resOrderRequest) {
-        ResOrder resOrder = orderDelegate.postDraftOrder(resOrderRequest);
-        return responseHelper.createResponseDetail(ResponseEnum.SUCCESS,
-                resOrderTransform.createResOrderResponse(resOrder));
-    }
-
-    @Override
-    public ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> postPaidtOrder(ResOrderPaymentRequest resOrderPaymentRequest) {
-        if (resOrderPaymentRequest.getChannelPayment().equalsIgnoreCase("bank")){
-            ResOrder resOrder = orderDelegate.postPaidOrder(resOrderPaymentRequest.getChannelPayment(), resOrderPaymentRequest.getNoReff());
-            return responseHelper.createResponseDetail(ResponseEnum.SUCCESS,
-                    resOrderTransform.createResOrderResponse(resOrder));
-        }else {
-            ResOrder resOrder = orderDelegate.getOrderByNoreff(resOrderPaymentRequest.getNoReff());
-            return responseHelper.createResponseDetail(ResponseEnum.PAYMENT_CHANNEL_BANK_ONLY,
-                    resOrderTransform.createResOrderResponse(resOrder));
-        }
-    }
-
-
+  }
 }

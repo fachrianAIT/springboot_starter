@@ -6,9 +6,10 @@ import org.ait.project.onboarding.modules.order.model.entity.ResOrder;
 
 public interface OrderDelegate {
 
-    // res_product
-    ResOrder getOrderByNoreff(String noReff);
-    ResOrder postDraftOrder(ResOrderRequest resOrderRequest);
+  // res_product
+  ResOrder getOrderByNoreff(String noReff);
 
-    ResOrder postPaidOrder(String noReff, String channelPayment);
+  ResOrder postDraftOrder(ResOrderRequest resOrderRequest);
+
+  ResOrder postPaidOrder(String noReff, String channelPayment);
 }

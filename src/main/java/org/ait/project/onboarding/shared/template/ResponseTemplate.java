@@ -13,6 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResponseTemplate<T> {
+
   @JsonProperty("response_schema")
   private ResponseSchema responseSchema;
   @JsonProperty("response_output")

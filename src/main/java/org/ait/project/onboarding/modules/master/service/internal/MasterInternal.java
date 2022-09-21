@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 
 public interface MasterInternal {
 
-    ResponseEntity<ResponseTemplate<ResponseCollection<ResProductResponse>>> getAllProduct();
-    ResponseEntity<ResponseTemplate<ResponseCollection<ResProductResponse>>> getAllProductPaging(Pageable pageable);
+  ResponseEntity<ResponseTemplate<ResponseCollection<ResProductResponse>>> getAllProduct();
+
+  ResponseEntity<ResponseTemplate<ResponseCollection<ResProductResponse>>> getAllProductPaging(
+      Pageable pageable);
 }

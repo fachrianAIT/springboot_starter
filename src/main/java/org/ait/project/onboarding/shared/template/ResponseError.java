@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResponseError {
+
   @JsonProperty("errors")
   private List<ErrorDetail> errorDetailList;
 }

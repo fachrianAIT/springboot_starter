@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseCollection<T>{
+public class ResponseCollection<T> {
 
-	@JsonProperty("pagination")
-	private PaginationConfig paginationConfig;
+  @JsonProperty("pagination")
+  private PaginationConfig paginationConfig;
 
-	@JsonProperty("content")
-	private List<T> content;
+  @JsonProperty("content")
+  private List<T> content;
 }

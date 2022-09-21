@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResponseSchema {
+
   @JsonProperty("response_code")
   private String responseCode;
   @JsonProperty("response_message")

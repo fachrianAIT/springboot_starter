@@ -7,7 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ResCustomerRepository extends JpaRepository<ResCustomer, Long> {
 
-    ResCustomer findFirstByCustomerCode(String customerCode);
-
-
+  ResCustomer findFirstByCustomerCode(String customerCode);
 }

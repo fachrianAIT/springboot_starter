@@ -1,6 +1,5 @@
 package org.ait.project.onboarding.shared.transform;
 
-
 import java.util.List;
 import java.util.Optional;
 import org.ait.project.onboarding.shared.template.PaginationConfig;
@@ -29,10 +28,10 @@ public interface ResponseTemplateTransform {
 
   @Mapping(target = "responseOutput", expression = "java(createResponseList(page,contents))")
   ResponseTemplate templateCollection(ResponseSchema responseSchema, Page page,
-                                      List contents);
+      List contents);
 
   ResponseCollection createResponseCollection(PaginationConfig paginationConfig,
-                                              List content);
+      List content);
 
   @Named("pageCollection")
   @Mapping(target = "page", source = "number")

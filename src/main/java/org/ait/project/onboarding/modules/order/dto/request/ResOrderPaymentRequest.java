@@ -11,9 +11,9 @@ import lombok.ToString;
 @ToString
 public class ResOrderPaymentRequest {
 
-    @JsonProperty("no_reff")
-    private String noReff;
+  @JsonProperty("no_reff")
+  private String noReff;
 
-    @JsonProperty("channel_payment")
-    private String channelPayment;
+  @JsonProperty("channel_payment")
+  private String channelPayment;
 }

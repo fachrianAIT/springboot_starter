@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ResMerchantRepository extends JpaRepository<ResMerchant, Long> {
 
-    ResMerchant findFirstByMerchantCode(String merchantCode);
+  ResMerchant findFirstByMerchantCode(String merchantCode);
 }

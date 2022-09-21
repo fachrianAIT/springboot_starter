@@ -11,19 +11,19 @@ import lombok.ToString;
 @ToString
 public class ResOrderLineResponse {
 
-    @JsonProperty("id")
-    private int id;
+  @JsonProperty("id")
+  private int id;
 
-    @JsonProperty("product_code")
-    private String productCode;
+  @JsonProperty("product_code")
+  private String productCode;
 
-    @JsonProperty("product_name")
-    private String productName;
+  @JsonProperty("product_name")
+  private String productName;
 
-    @JsonProperty("product_qty")
-    private String productQty;
+  @JsonProperty("product_qty")
+  private String productQty;
 
-    @JsonProperty("sub_total")
-    private String subTotal;
+  @JsonProperty("sub_total")
+  private String subTotal;
 
 }

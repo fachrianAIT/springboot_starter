@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResponseList<T> {
+
   @JsonProperty("list")
   private ResponseCollection<T> list;
 }

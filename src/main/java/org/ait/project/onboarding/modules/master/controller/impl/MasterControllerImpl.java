@@ -17,18 +17,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/master/v1")
 public class MasterControllerImpl implements MasterController {
 
-    @Autowired
-    MasterInternalImpl masterInternal;
+  @Autowired
+  MasterInternalImpl masterInternal;
 
-    @Override
-    @GetMapping("/product")
-    public ResponseEntity<ResponseTemplate<ResponseCollection<ResProductResponse>>> getAllProduct() {
-        return masterInternal.getAllProduct();
-    }
+  @Override
+  @GetMapping("/product")
+  public ResponseEntity<ResponseTemplate<ResponseCollection<ResProductResponse>>> getAllProduct() {
+    return masterInternal.getAllProduct();
+  }
 
-    @Override
-    @GetMapping("/product-paging")
-    public ResponseEntity<ResponseTemplate<ResponseCollection<ResProductResponse>>> getAllProductPaging(Pageable pageable) {
-        return masterInternal.getAllProductPaging(pageable);
-    }
+  @Override
+  @GetMapping("/product-paging")
+  public ResponseEntity<ResponseTemplate<ResponseCollection<ResProductResponse>>>
+      getAllProductPaging(Pageable pageable) {
+    return masterInternal.getAllProductPaging(pageable);
+  }
 }

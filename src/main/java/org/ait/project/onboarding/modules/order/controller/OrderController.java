@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface OrderController {
 
 
-    ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> getOrderByNoReff(String noReff);
-    ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> postDraftOrder(@RequestBody ResOrderRequest resOrderRequest);
+  ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> getOrderByNoReff(
+      String noReff);
 
-    ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> postPaidOrder(@RequestBody ResOrderPaymentRequest resOrderPaymentRequest);
+  ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> postDraftOrder(
+      @RequestBody ResOrderRequest resOrderRequest);
+
+  ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> postPaidOrder(
+      @RequestBody ResOrderPaymentRequest resOrderPaymentRequest);
 }

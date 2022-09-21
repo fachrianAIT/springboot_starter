@@ -10,9 +10,13 @@ import org.springframework.http.ResponseEntity;
 
 public interface OrderInternal {
 
-    ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> getOrderByNoReff(String noReff);
-    ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> postDraftOrder(ResOrderRequest resOrderRequest);
+  ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> getOrderByNoReff(
+      String noReff);
 
-    ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> postPaidtOrder(ResOrderPaymentRequest resOrderPaymentRequest);
+  ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> postDraftOrder(
+      ResOrderRequest resOrderRequest);
+
+  ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> postPaidtOrder(
+      ResOrderPaymentRequest resOrderPaymentRequest);
 }
 

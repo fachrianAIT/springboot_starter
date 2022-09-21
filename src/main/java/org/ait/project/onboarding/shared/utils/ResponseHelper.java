@@ -50,7 +50,7 @@ public class ResponseHelper {
   }
 
   public Object createResponseErrorTemplate(ResponseEnum invalidParam,
-                                            ResponseError responseError) {
+      ResponseError responseError) {
     return responseTransform
         .templateError(responseMessageHelper.getResponseSchema(invalidParam), responseError);
   }

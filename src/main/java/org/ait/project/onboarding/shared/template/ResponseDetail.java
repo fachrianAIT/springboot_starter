@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResponseDetail<T> {
+
   @JsonProperty("detail")
   private T detail;
 }
