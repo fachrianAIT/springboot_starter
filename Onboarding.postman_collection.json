@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "5b67fad3-1949-4286-9e8d-e2077f76c5a3",
+		"name": "Onboarding",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23414231"
+	},
+	"item": [
+		{
+			"name": "master",
+			"item": [
+				{
+					"name": "getProduct",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/master/v1/product",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"master",
+								"v1",
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProductPaging",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/master/v1/product-paging?page=0&sort=id,desc&size=5",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"master",
+								"v1",
+								"product-paging"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "sort",
+									"value": "id,desc"
+								},
+								{
+									"key": "size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "getOrderByNoReff",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/api/trx/v1/order/50a12d41-3551-4818-a0f4-052de30d3fd1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"trx",
+								"v1",
+								"order",
+								"50a12d41-3551-4818-a0f4-052de30d3fd1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postDraftOrder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"customer_code\": \"001\",\r\n\"merchant_code\": \"A1\",\r\n\"total\": \"100000\",\r\n\"status\": \"draft\",\r\n\"customer_email\": \"fachrianlr@gmail.com\",\r\n\"customer_phone\": \"08976763888\",\r\n\"customer_address\": \"Jl Supriyadi No 2 - Slawi\",\r\n\"order_line\": [\r\n    {\r\n        \"product_code\": \"AAA\",\r\n         \"product_name\": \"Laptop\",\r\n        \"product_qty\": \"2\",\r\n        \"sub_total\": \"80000\"\r\n    },\r\n    {\r\n        \"product_code\": \"BBB\",\r\n         \"product_name\": \"Keyboard\",\r\n        \"product_qty\": \"1\",\r\n        \"sub_total\": \"20000\"\r\n    }\r\n ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/trx/v1/draft-order",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"trx",
+								"v1",
+								"draft-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postPaidOrder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"no_reff\": \"50a12d41-3551-4818-a0f4-052de30d3fd1\",\r\n\"channel_payment\": \"Ban1k\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/trx/v1/paid-order",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"trx",
+								"v1",
+								"paid-order"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
