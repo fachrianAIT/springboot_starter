@@ -10,7 +10,7 @@ import org.mapstruct.Named;
 
 
 @Mapper(componentModel = "spring") // for Dependency Injection Spring
-public interface ResProductTransform {
+public interface ProductTransform {
 
 
   @Named("createProductResponse")

@@ -5,7 +5,7 @@ import org.ait.project.onboarding.modules.master.dto.response.ResProductResponse
 import org.ait.project.onboarding.modules.master.model.entity.ResProduct;
 import org.ait.project.onboarding.modules.master.service.delegate.impl.MasterDelegateImpl;
 import org.ait.project.onboarding.modules.master.service.internal.MasterInternal;
-import org.ait.project.onboarding.modules.master.transform.ResProductTransform;
+import org.ait.project.onboarding.modules.master.transform.ProductTransform;
 import org.ait.project.onboarding.shared.enums.ResponseEnum;
 import org.ait.project.onboarding.shared.template.ResponseCollection;
 import org.ait.project.onboarding.shared.template.ResponseTemplate;
@@ -26,7 +26,7 @@ public class MasterInternalImpl implements MasterInternal {
   ResponseHelper responseHelper;
 
   @Autowired
-  ResProductTransform resProductTransform;
+  ProductTransform resProductTransform;
 
   @Override
   public ResponseEntity<ResponseTemplate<ResponseCollection<ResProductResponse>>> getAllProduct() {

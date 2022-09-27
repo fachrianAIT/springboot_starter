@@ -16,7 +16,7 @@ public interface OrderInternal {
   ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> postDraftOrder(
       ResOrderRequest resOrderRequest);
 
-  ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> postPaidtOrder(
+  ResponseEntity<ResponseTemplate<ResponseDetail<ResOrderResponse>>> postPaidOrder(
       ResOrderPaymentRequest resOrderPaymentRequest);
 }
 

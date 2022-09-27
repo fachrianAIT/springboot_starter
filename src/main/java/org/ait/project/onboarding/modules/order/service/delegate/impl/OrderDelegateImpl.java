@@ -2,10 +2,10 @@ package org.ait.project.onboarding.modules.order.service.delegate.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import org.ait.project.onboarding.modules.master.model.entity.ResCustomer;
 import org.ait.project.onboarding.modules.master.model.entity.ResMerchant;
-import org.ait.project.onboarding.modules.master.model.entity.ResProduct;
 import org.ait.project.onboarding.modules.master.model.repository.ResCustomerRepository;
 import org.ait.project.onboarding.modules.master.model.repository.ResMerchantRepository;
 import org.ait.project.onboarding.modules.master.model.repository.ResProductRepository;
@@ -15,10 +15,10 @@ import org.ait.project.onboarding.modules.order.model.entity.ResOrder;
 import org.ait.project.onboarding.modules.order.model.entity.ResOrderLine;
 import org.ait.project.onboarding.modules.order.model.repository.ResOrderRepository;
 import org.ait.project.onboarding.modules.order.service.delegate.OrderDelegate;
+import org.ait.project.onboarding.modules.order.transform.OrderTransform;
 import org.ait.project.onboarding.shared.enums.OrderStatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 
 @Service
@@ -30,9 +30,11 @@ public class OrderDelegateImpl implements OrderDelegate {
   ResCustomerRepository resCustomerRepository;
   @Autowired
   ResMerchantRepository resMerchantRepository;
-
   @Autowired
   ResProductRepository resProductRepository;
+
+  @Autowired
+  OrderTransform orderTransform;
 
   @Override
   public ResOrder getOrderByNoreff(String noReff) {
@@ -43,15 +45,14 @@ public class OrderDelegateImpl implements OrderDelegate {
   public ResOrder postDraftOrder(ResOrderRequest resOrderRequest) {
 
     ResCustomer resCustomer = resCustomerRepository.findFirstByCustomerCode(
-        resOrderRequest.getCustomerCode());
+        resOrderRequest.getCustomerCode()).orElseThrow(() -> new RuntimeException("No Customer Data"));
     ResMerchant resMerchant = resMerchantRepository.findFirstByMerchantCode(
-        resOrderRequest.getMerchantCode());
+        resOrderRequest.getMerchantCode()).orElseThrow(() -> new RuntimeException("No Merchant Data"));;
 
     List<ResOrderLineRequest> resOrderLineRequestList = resOrderRequest.getOrderLine();
 
     ResOrder resOrder = new ResOrder();
     List<ResOrderLine> resOrderLines = new ArrayList<ResOrderLine>();
-    List<ResProduct> resProductList = new ArrayList<ResProduct>();
 
     for (int i = 0; i < resOrderLineRequestList.size(); i += 1) {
 
@@ -79,8 +80,8 @@ public class OrderDelegateImpl implements OrderDelegate {
     resOrder.setCustomerEmail(resOrderRequest.getCustomerEmail());
     resOrder.setCustomerAddress(resOrderRequest.getCustomerAddress());
     resOrder.setOrderLine(resOrderLines);
-    resOrderRepository.save(resOrder);
 
+    resOrderRepository.save(resOrder);
     return resOrder;
   }
 
